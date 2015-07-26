@@ -1,4 +1,4 @@
-var wolfram = require('wolfram').createClient(process.env.WOLFRAM_API_KEY);
+var wolfram = require('wolfram').createClient(process.env.WOLFRAM_APPID);
 
 var utils = {
 	analyseQuery: function(options){
