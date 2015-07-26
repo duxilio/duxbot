@@ -4,9 +4,6 @@ var utils = require('./utils'),
 	};
 
 var Duxbot = function(query, callback){
-	//strip duxbot from the query
-	query = query.replace('duxbot', '').trim();
-
 	if(query === ''){
 		callback('How can I help?');
 		return;
