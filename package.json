@@ -1,0 +1,14 @@
+{
+  "name": "duxbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Koen Vendrik",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "wolfram": "^0.3.2"
+  }
+}
