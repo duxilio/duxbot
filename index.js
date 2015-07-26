@@ -1,9 +1,5 @@
-var wolfram = require('wolfram').createClient(process.env.WOLFRAM_API_KEY);
+var Duxbot = require('./libs/duxbot');
 
-console.log(process.argv[2]);
-
-wolfram.query(process.argv[2], function(err, result) {
-    if(err) throw err;
-    console.log(result);
-    console.log('====> '+result[1].subpods[0].value);
+new Duxbot(process.argv[2], function(result){
+	console.log(result);
 });
