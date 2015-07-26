@@ -4,6 +4,14 @@ var utils = require('./utils'),
 	};
 
 var Duxbot = function(query, callback){
+	//strip duxbot from the query
+	query = query.replace('duxbot', '').trim();
+
+	if(query === ''){
+		callback('How can I help?');
+		return;
+	}
+
 	this.callback = callback;
 	this.analyseQuery(query);
 };
@@ -14,7 +22,9 @@ Duxbot.prototype.analyseQuery = function(query){
 		query: query,
 		triggerWords: [{
 			words: ['lights', 'light'],
-			handler: queryHandlers.Lights
+			handler: function(foundWord, query){
+				new queryHandlers.Lights(foundWord, query, self.callback);
+			}
 		}],
 		defaultAction: function(){
 			utils.getWolframResult(query, self.callback);

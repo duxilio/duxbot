@@ -9,6 +9,7 @@
   "author": "Koen Vendrik",
   "license": "BSD-2-Clause",
   "dependencies": {
+    "say": "^0.6.0",
     "wolfram": "^0.3.2"
   }
 }

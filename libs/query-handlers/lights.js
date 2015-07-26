@@ -1,32 +1,33 @@
 var utils = require('../utils');
 
-var Lights = function(query, callback){
+var Lights = function(foundWord, query, callback){
 	this.callback = callback;
 	this.analyseQuery(query);
 };
 
 Lights.prototype.analyseQuery = function(query){
 	var self = this;
+
 	utils.analyseQuery({
 		query: query,
 		triggerWords: [{
 			words: ['off'],
 			handler: function(){
-				console.log('turn the lights off');
+				self.callback('turning off the lights');
 			}
 		}, {
 			words: ['on'],
 			handler: function(){
-				console.log('turn the lights on');
+				self.callback('turning on the lights');
 			}
 		}, {
 			words: ['dim'],
 			handler: function(){
-				console.log('dim the lights');
+				self.callback('dimming the lights');
 			}
 		}],
 		defaultAction: function(){
-			console.log('no words matched in lights');
+			self.callback('no action found for your command', 'no action found for '+query);
 		}
 	});
 };
