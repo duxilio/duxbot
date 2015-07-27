@@ -65,7 +65,7 @@ var utils = {
 		wolfram.query(query, function(err, result){
 		    if(err) throw err;
 
-		    if(result[1] && subpods[0]){
+		    if(result[1] && result[1].subpods[0]){
 		    	self.callback(result[1].subpods[0].value.replace(/\(.+\)/g, ''));
 		    } else {
 		    	self.callback({
