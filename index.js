@@ -1,4 +1,5 @@
 var Duxbot = require('./libs/duxbot'),
+	utils = require('./libs/utils'),
 	say = require('say'),
 	input = process.argv[2];
 
@@ -10,7 +11,7 @@ if(input.indexOf('duxbot') !== -1){
 
 	new Duxbot(query, function(prettyResult, logResult){
 		say.speak(null, prettyResult);
-		console.log(logResult || prettyResult);
+		utils.log(logResult || prettyResult);
 	});
 
 }
