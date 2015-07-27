@@ -3,5 +3,5 @@ Duxbot
 
 ##### Usage:
 ```
-WOLFRAM_APPID=<APPID> node index.js "<QUERY>"
+WOLFRAM_APPID=<APPID> ./duxbot "<QUERY>"
 ```
