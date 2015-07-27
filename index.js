@@ -1,17 +1,34 @@
 var Duxbot = require('./libs/duxbot'),
-	utils = require('./libs/utils'),
-	say = require('say'),
-	input = process.argv[2];
+	logger = require('./libs/logger'),
+	say = require('say');
 
-if(input.indexOf('duxbot') !== -1){
-	//if duxbot is mentioned, continue
+var input = process.argv[2],
+	triggerWord = 'hey duxbot';
+
+if(new RegExp('^'+triggerWord.replace(/\s/g, '\\s')+'([^a-zA-Z0-9])?', 'i').test(input)){
+	//if <triggerword> is mentioned, continue
 
 	//strip duxbot from the query
-	var query = process.argv[2].replace('duxbot', '').trim();
+	var query = process.argv[2].replace(triggerWord, '').trim();
 
-	new Duxbot(query, function(prettyResult, logResult){
-		say.speak(null, prettyResult);
-		utils.log(logResult || prettyResult);
+	var duxClient = new Duxbot(function(result){
+		say.speak(null, result.prettyResult);
+
+		switch(result.statusCode){
+			case 0:
+				//success
+				logger.log(result.logResult);
+				break;
+			case 1:
+				//warn
+				logger.warn(result.logResult);
+				break;
+			case 2:
+				//error
+				logger.error(result.logResult);
+				break;
+		}
 	});
 
+	duxClient.analyseQuery(query);
 }

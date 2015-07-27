@@ -1,7 +1,6 @@
 var utils = require('../utils');
 
-var Lights = function(foundWord, query, callback){
-	this.callback = callback;
+var Lights = function(foundWord, query){
 	this.analyseQuery(query);
 };
 
@@ -13,21 +12,25 @@ Lights.prototype.analyseQuery = function(query){
 		triggerWords: [{
 			words: ['off'],
 			handler: function(){
-				self.callback('turning off the lights');
+				utils.callback('turning off the lights');
 			}
 		}, {
 			words: ['on'],
 			handler: function(){
-				self.callback('turning on the lights');
+				utils.callback('turning on the lights');
 			}
 		}, {
 			words: ['dim'],
 			handler: function(){
-				self.callback('dimming the lights');
+				utils.callback('dimming the lights');
 			}
 		}],
 		defaultAction: function(){
-			self.callback('no action found for your command', 'no action found for '+query);
+			utils.callback({
+				statusCode: 1,
+				prettyResult: 'no action found for your command',
+				logResult: 'no action found for '+query
+			});
 		}
 	});
 };
