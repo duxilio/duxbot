@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var say = require('say'),
 	Duxbot = require('./libs/duxbot'),
 	logger = require('./libs/logger');
