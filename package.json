@@ -12,5 +12,8 @@
     "chalk": "^1.1.0",
     "say": "^0.6.0",
     "wolfram": "^0.3.2"
+  },
+  "bin": {
+    "duxbot": "index.js"
   }
 }

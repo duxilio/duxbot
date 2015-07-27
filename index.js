@@ -1,6 +1,6 @@
-var Duxbot = require('./libs/duxbot'),
-	logger = require('./libs/logger'),
-	say = require('say');
+var say = require('say'),
+	Duxbot = require('./libs/duxbot'),
+	logger = require('./libs/logger');
 
 var input = process.argv[2],
 	triggerWord = 'hey duxbot';
